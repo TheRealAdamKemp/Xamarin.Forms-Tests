@@ -74,5 +74,8 @@ Global
 		$0.StandardHeader = $1
 		$1.Text = @*************************************************************************\n Copyright (c) 2014-2014,\n National Instruments Corporation.\n All rights reserved.\n*************************************************************************\n
 		$1.IncludeInNewFiles = False
+		$0.DotNetNamingPolicy = $2
+		$2.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$2.ResourceNamePolicy = FileFormatDefault
 	EndGlobalSection
 EndGlobal
