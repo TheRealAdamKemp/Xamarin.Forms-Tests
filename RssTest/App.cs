@@ -1,30 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
-using HigLabo.Net.Rss;
+using RssTest.Model;
+using RssTest.View.Pages;
+using RssTest.ViewModel;
 
 namespace RssTest
 {
     public class App
     {
-        private static ListPage _listPage;
-
         public static Page GetMainPage()
         {
-            _listPage = new ListPage()
+            var mainPageViewModel = new MainPageViewModel();
+            mainPageViewModel.LoadItemsAsync(LoadItemsAsync(new Uri("http://feeds.macrumors.com/MacRumors-All?format=xml")));
+            var mainPage = new MainPage()
                 {
-                    ItemsSource = Enumerable.Repeat("Loading...", 1),
+                    BindingContext = mainPageViewModel
                 };
-            LoadItemsAsync(new Uri("http://feeds.macrumors.com/MacRumors-All?format=xml"));
-            return _listPage;
+            return mainPage;
         }
 
-        public static async void LoadItemsAsync(Uri feedUri)
+        public static async Task<IEnumerable<RssItem>> LoadItemsAsync(Uri feedUri)
         {
-            var client = new RssClient();
+            var client = new HigLabo.Net.Rss.RssClient();
             var feed = await client.GetRssFeedAsync(feedUri);
-            _listPage.ItemsSource = feed.Items.Select(item => item.Title);
+            return feed.Items.Select(item => new RssItem()
+                {
+                    Title = item.Title,
+                    Description = item.Description,
+                    Link = item.Link
+                });
         }
     }
 }
