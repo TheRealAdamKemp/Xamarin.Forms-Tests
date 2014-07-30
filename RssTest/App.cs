@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
+using Navigation;
 using RssTest.Model;
-using RssTest.View.Pages;
 using RssTest.ViewModel;
 
 namespace RssTest
@@ -16,11 +16,9 @@ namespace RssTest
         {
             var mainPageViewModel = new MainPageViewModel();
             mainPageViewModel.LoadItemsAsync(LoadItemsAsync(new Uri("http://feeds.macrumors.com/MacRumors-All?format=xml")));
-            var mainPage = new MainPage()
-                {
-                    BindingContext = mainPageViewModel
-                };
-            return mainPage;
+
+            var navigationFrame = new NavigationFrame(mainPageViewModel);
+            return navigationFrame.Root;
         }
 
         public static async Task<IEnumerable<RssItem>> LoadItemsAsync(Uri feedUri)

@@ -3,25 +3,25 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ValueConverters="clr-namespace:RssTest.ValueConverters;assembly=RssTest"
-    x:Class="RssTest.View.Pages.MainPage">
+    x:Class="RssTest.View.Pages.MainPage"
+    Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ValueConverters:BooleanNegationConverter x:Key="not" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <OnPlatform.iOS>0, 20, 0, 0</OnPlatform.iOS>
-        </OnPlatform>
-    </ContentPage.Padding>
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="0" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0" />
         </Grid.ColumnDefinitions>
-        <ListView IsVisible="{Binding IsLoading, Converter={StaticResource not}" ItemsSource="{Binding Items}"
+        <ListView x:Name="_listView"
+            IsVisible="{Binding IsLoading, Converter={StaticResource not}" ItemsSource="{Binding Items}"
+            ItemSelected="HandleItemSelected"
             VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <ListView.ItemTemplate>
                 <DataTemplate>

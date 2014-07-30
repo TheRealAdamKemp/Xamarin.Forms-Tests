@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 using RssTest.Model;
 
 namespace RssTest.ViewModel
 {
-    public class MainPageViewModel : NotifyPropertyChangedBase
+    public class MainPageViewModel : PageViewModel
     {
+        public MainPageViewModel()
+        {
+            Title = "Main Page";
+        }
+
         public async void LoadItemsAsync(Task<IEnumerable<RssItem>> loadTask)
         {
             IsLoading = true;
@@ -54,6 +61,25 @@ namespace RssTest.ViewModel
                     OnPropertyChanged();
                 }
             }
+        }
+
+        private Command _itemSelectedCommand;
+        public ICommand ItemSelectedCommand
+        {
+            get
+            {
+                if (_itemSelectedCommand == null)
+                {
+                    _itemSelectedCommand = new Command(HandleItemSelected);
+                }
+
+                return _itemSelectedCommand;
+            }
+        }
+
+        private void HandleItemSelected(object parameter)
+        {
+            NavigationFrame.NavigateTo(new ItemPageViewModel() { Item = parameter as RssItem });
         }
     }
 }

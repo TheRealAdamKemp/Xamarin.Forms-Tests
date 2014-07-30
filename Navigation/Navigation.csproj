@@ -4,12 +4,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{2C362A2A-2662-4FBE-832A-89BC31D459DD}</ProjectGuid>
+    <ProjectGuid>{D0F10A42-7E0B-4A2F-BB39-321B84AEE32D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RssTest</RootNamespace>
-    <AssemblyName>RssTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Navigation</RootNamespace>
+    <AssemblyName>Navigation</AssemblyName>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,60 +30,21 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\RssItem.cs" />
-    <Compile Include="Model\RssFeedItem.cs" />
-    <Compile Include="ViewModel\MainPageViewModel.cs" />
-    <Compile Include="View\Pages\MainPage.xaml.cs">
-      <DependentUpon>..\..\Pages\MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ValueConverters\BooleanNegationConverter.cs" />
-    <Compile Include="Model\NotifyPropertyChangedBase.cs" />
-    <Compile Include="ViewModel\PageViewModel.cs" />
-    <Compile Include="ViewModel\ItemPageViewModel.cs" />
-    <Compile Include="View\Pages\ItemPage.xaml.cs">
-      <DependentUpon>ItemPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="INavigate.cs" />
+    <Compile Include="NavigationFrame.cs" />
+    <Compile Include="RegisterViewModelAttribute.cs" />
+    <Compile Include="INavigatedPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" />
   <ItemGroup>
-    <Reference Include="HigLabo.Net.PCL">
-      <HintPath>..\Imports\HigLabo.Net.PCL.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Imports\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="HigLabo.Net.Rss.PCL">
-      <HintPath>..\Imports\HigLabo.Net.Rss.PCL.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="View\Pages\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Pages\ItemPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
-    <Folder Include="ValueConverters\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Navigation\Navigation.csproj">
-      <Project>{D0F10A42-7E0B-4A2F-BB39-321B84AEE32D}</Project>
-      <Name>Navigation</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

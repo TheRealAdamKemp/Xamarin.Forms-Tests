@@ -108,6 +108,10 @@
       <Project>{2C362A2A-2662-4FBE-832A-89BC31D459DD}</Project>
       <Name>RssTest</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Navigation\Navigation.csproj">
+      <Project>{D0F10A42-7E0B-4A2F-BB39-321B84AEE32D}</Project>
+      <Name>Navigation</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
