@@ -34,17 +34,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\RssItem.cs" />
     <Compile Include="Model\RssFeedItem.cs" />
-    <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="View\Pages\MainPage.xaml.cs">
       <DependentUpon>..\..\Pages\MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverters\BooleanNegationConverter.cs" />
     <Compile Include="Model\NotifyPropertyChangedBase.cs" />
-    <Compile Include="ViewModel\PageViewModel.cs" />
-    <Compile Include="ViewModel\ItemPageViewModel.cs" />
     <Compile Include="View\Pages\ItemPage.xaml.cs">
       <DependentUpon>ItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Pages\ItemPageViewModel.cs" />
+    <Compile Include="ViewModel\Pages\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\Pages\PageViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" />
@@ -78,6 +78,7 @@
     <Folder Include="ViewModel\" />
     <Folder Include="View\" />
     <Folder Include="ValueConverters\" />
+    <Folder Include="ViewModel\Pages\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Navigation\Navigation.csproj">

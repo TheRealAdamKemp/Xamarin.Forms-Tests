@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace RssTest.View.Pages
 {
-    [Navigation.RegisterViewModel(typeof(RssTest.ViewModel.MainPageViewModel))]
+    [Navigation.RegisterViewModel(typeof(RssTest.ViewModel.Pages.MainPageViewModel))]
     public partial class MainPage : ContentPage
     {
         public const string ItemSelectedCommandPropertyName = "ItemSelectedCommand"; 

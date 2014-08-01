@@ -1,6 +1,6 @@
 ﻿using RssTest.Model;
 
-namespace RssTest.ViewModel
+namespace RssTest.ViewModel.Pages
 {
     public class ItemPageViewModel : PageViewModel
     {

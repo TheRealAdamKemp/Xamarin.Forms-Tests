@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 using Navigation;
 using RssTest.Model;
-using RssTest.ViewModel;
+using RssTest.ViewModel.Pages;
 
 namespace RssTest
 {

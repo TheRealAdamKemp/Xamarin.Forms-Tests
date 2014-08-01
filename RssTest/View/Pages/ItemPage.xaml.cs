@@ -2,7 +2,7 @@
 
 namespace RssTest.View.Pages
 {
-    [Navigation.RegisterViewModel(typeof(RssTest.ViewModel.ItemPageViewModel))]
+    [Navigation.RegisterViewModel(typeof(RssTest.ViewModel.Pages.ItemPageViewModel))]
     public partial class ItemPage : ContentPage
     {    
         public ItemPage ()
