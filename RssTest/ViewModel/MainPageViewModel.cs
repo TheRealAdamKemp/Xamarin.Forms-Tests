@@ -79,7 +79,7 @@ namespace RssTest.ViewModel
 
         private void HandleItemSelected(object parameter)
         {
-            NavigationFrame.NavigateTo(new ItemPageViewModel() { Item = parameter as RssItem });
+            ViewModelNavigation.PushAsync(new ItemPageViewModel() { Item = parameter as RssItem });
         }
     }
 }

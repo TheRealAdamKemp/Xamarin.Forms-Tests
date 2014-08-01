@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Navigation
 {
-    public class NavigationFrame : INavigate
+    public class NavigationFrame : IViewModelNavigation
     {
         private static readonly Dictionary<Type,Type> ViewModelTypeToPageType;
 
@@ -52,14 +53,44 @@ namespace Navigation
         public NavigationFrame(object rootViewModel)
         {
             _navigationPage = new NavigationPage(CreatePageForViewModel(rootViewModel));
-            _navigationPage.Popped += (sender, e) => SetFrameReference(e.Page.BindingContext, null);
         }
 
         public Page Root { get { return _navigationPage; } }
 
-        public void NavigateTo(object viewModel)
+        public async Task<object> PopAsync()
         {
-            _navigationPage.PushAsync(CreatePageForViewModel(viewModel));
+            var currentViewModel = CurrentViewModel;
+            await _navigationPage.PopAsync();;
+            return currentViewModel;
+        }
+
+        public async Task<object> PopModalAsync()
+        {
+            var poppedPage = await _navigationPage.Navigation.PopModalAsync();
+            return poppedPage.BindingContext;
+        }
+
+        public Task PopToRootAsync()
+        {
+            return _navigationPage.PopToRootAsync();
+        }
+
+        public Task PushAsync(object viewModel)
+        {
+             return _navigationPage.PushAsync(CreatePageForViewModel(viewModel));
+        }
+
+        public Task PushModalAsync(object viewModel)
+        {
+            return _navigationPage.Navigation.PushModalAsync(CreatePageForViewModel(viewModel));
+        }
+
+        public object CurrentViewModel
+        {
+            get
+            {
+                return _navigationPage.CurrentPage.BindingContext;
+            }
         }
 
         private Page CreatePageForViewModel(object viewModel)
@@ -76,17 +107,17 @@ namespace Navigation
             return newPage;
         }
 
-        private static void SetFrameReference(object viewModel, INavigate frame)
+        private static void SetFrameReference(object viewModel, IViewModelNavigation frame)
         {
             if (viewModel == null)
             {
                 return;
             }
 
-            var navigatedPage = viewModel as INavigatedPage;
+            var navigatedPage = viewModel as INavigatingViewModel;
             if (navigatedPage != null)
             {
-                navigatedPage.NavigationFrame = frame;
+                navigatedPage.ViewModelNavigation = frame;
             }
         }
     }

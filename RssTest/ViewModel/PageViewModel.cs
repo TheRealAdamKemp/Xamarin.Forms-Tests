@@ -3,7 +3,7 @@ using RssTest.Model;
 
 namespace RssTest.ViewModel
 {
-    public abstract class PageViewModel : NotifyPropertyChangedBase, INavigatedPage
+    public abstract class PageViewModel : NotifyPropertyChangedBase, INavigatingViewModel
     {
         private string _title;
         public string Title
@@ -21,7 +21,7 @@ namespace RssTest.ViewModel
             
         #region INavigatedPage implementation
 
-        public INavigate NavigationFrame { get; set; }
+        public IViewModelNavigation ViewModelNavigation { get; set; }
 
         #endregion
     }

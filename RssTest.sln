@@ -87,7 +87,7 @@ Global
 		{D0F10A42-7E0B-4A2F-BB39-321B84AEE32D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Android\RssTest.Android.csproj
+		StartupItem = iOS\RssTest.iOS.csproj
 		Policies = $0
 		$0.StandardHeader = $1
 		$1.Text = @*************************************************************************\n Copyright (c) 2014-2014,\n National Instruments Corporation.\n All rights reserved.\n*************************************************************************\n

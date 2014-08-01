@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="INavigate.cs" />
     <Compile Include="NavigationFrame.cs" />
     <Compile Include="RegisterViewModelAttribute.cs" />
-    <Compile Include="INavigatedPage.cs" />
+    <Compile Include="IViewModelNavigation.cs" />
+    <Compile Include="INavigatingViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" />
