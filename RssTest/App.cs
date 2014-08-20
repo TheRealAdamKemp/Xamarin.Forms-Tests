@@ -24,7 +24,9 @@ namespace RssTest
         public static async Task<IEnumerable<RssItem>> LoadItemsAsync(Uri feedUri)
         {
             var client = new HigLabo.Net.Rss.RssClient();
-            var feed = await client.GetRssFeedAsync(feedUri);
+            var tcs = new TaskCompletionSource<HigLabo.Net.Rss.RssFeed>();
+            client.GetRssFeed(feedUri, tcs.SetResult);
+            var feed = await tcs.Task;
             return feed.Items.Select(item => new RssItem()
                 {
                     Title = item.Title,

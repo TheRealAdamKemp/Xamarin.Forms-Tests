@@ -56,7 +56,9 @@ namespace RssTest.Model
         public async Task LoadItemsAsync()
         {
             var client = new RssClient();
-            var feed = await client.GetRssFeedAsync(new Uri(FeedUrl));
+            var tcs = new TaskCompletionSource<RssFeed>();
+            client.GetRssFeed(new Uri(FeedUrl), tcs.SetResult);
+            var feed = await tcs.Task;
             Items = feed.Items.Select(item => new RssItem()
                 {
                     Title = item.Title,

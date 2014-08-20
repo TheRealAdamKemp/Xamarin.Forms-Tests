@@ -49,20 +49,20 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.2.1.6229\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" />
   <ItemGroup>
-    <Reference Include="HigLabo.Net.PCL">
-      <HintPath>..\Imports\HigLabo.Net.PCL.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Imports\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="HigLabo.Net.Rss.PCL">
-      <HintPath>..\Imports\HigLabo.Net.Rss.PCL.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.1.2.1.6229\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="HigLabo.Net.Rss">
+      <HintPath>..\Imports\HigLabo.Net.Rss.dll</HintPath>
+    </Reference>
+    <Reference Include="HigLabo.Net">
+      <HintPath>..\Imports\HigLabo.Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
