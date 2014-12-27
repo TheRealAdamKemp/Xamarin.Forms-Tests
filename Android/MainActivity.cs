@@ -1,28 +1,20 @@
-﻿using System;
-
-using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.App;
 using Android.OS;
 
 using Xamarin.Forms.Platform.Android;
 
-
 namespace RssTest.Android
 {
-   [Activity(Label = "RssTest.Android.Android", MainLauncher = true)]
-   public class MainActivity : AndroidActivity
-   {
-      protected override void OnCreate(Bundle bundle)
-      {
-         base.OnCreate(bundle);
+    [Activity(Label = "RssTest.Android.Android", MainLauncher = true)]
+    public class MainActivity : FormsApplicationActivity
+    {
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            Xamarin.Forms.Forms.Init(activity: this, bundle: savedInstanceState);
 
-         Xamarin.Forms.Forms.Init(this, bundle);
+            base.OnCreate(savedInstanceState);
 
-         SetPage(App.GetMainPage());
-      }
-   }
+            LoadApplication(new RssTestApplication());
+        }
+    }
 }
-

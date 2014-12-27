@@ -10,9 +10,14 @@ using RssTest.ViewModel.Pages;
 
 namespace RssTest
 {
-    public class App
+    public class RssTestApplication : Application
     {
-        public static Page GetMainPage()
+        public RssTestApplication()
+        {
+            MainPage = CreateMainPage();
+        }
+
+        private static Page CreateMainPage()
         {
             var mainPageViewModel = new MainPageViewModel();
             mainPageViewModel.LoadItemsAsync(LoadItemsAsync(new Uri("http://feeds.macrumors.com/MacRumors-All?format=xml")));
@@ -21,7 +26,7 @@ namespace RssTest
             return navigationFrame.Root;
         }
 
-        public static async Task<IEnumerable<RssItem>> LoadItemsAsync(Uri feedUri)
+        private static async Task<IEnumerable<RssItem>> LoadItemsAsync(Uri feedUri)
         {
             var client = new HigLabo.Net.Rss.RssClient();
             var tcs = new TaskCompletionSource<HigLabo.Net.Rss.RssFeed>();
@@ -36,4 +41,3 @@ namespace RssTest
         }
     }
 }
-
